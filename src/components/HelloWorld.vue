@@ -1,10 +1,12 @@
 <template>
+<div>
     <button @click="handleClick">click</button>
-    <button @click="stopwatch">stop watch</button> 
-    <button @click="startWatch">startWatch</button> 
+    <button @click="stopwatch">stop watch</button>
+    <button @click="startWatch">startWatch</button>
     <div>{{count}}</div>
     <div>time: {{state.time}}</div>
     <div>dou: {{dou}}</div>
+</div>
 </template>
 
 <script>
@@ -26,12 +28,13 @@ function test() {
 export default defineComponent({
     name: "HelloWorld",
     props: {
-        msg: String,
+        msg: String
     },
     setup() {
-        test(this);
         const count = ref(0); // 针对数值型,RefImpl
-        const state = reactive({ time: 0 }); // 针对引用类型 proxy
+        const state = reactive({
+            time: 0
+        }); // 针对引用类型 proxy
         console.log("count: ", count);
 
         console.log("state: ", state);
@@ -63,7 +66,7 @@ export default defineComponent({
             watchEffect(() => {
                 console.log("dou New", state.time);
             });
-        }
+        };
 
         return {
             dou,
@@ -71,12 +74,13 @@ export default defineComponent({
             state,
             stopwatch,
             startWatch,
-            handleClick,
+            handleClick
         };
-    },
+    }
 });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 </style>
